@@ -1,5 +1,5 @@
 import sqlite3
-
+from console import conf
 
 def agg_user(name, edad):                               #Agregar usuarios
     with sqlite3.connect('usuarios.db') as conn:
@@ -90,12 +90,7 @@ def formato_users(user, index=None):                    #Formato de impresion de
          return f'{index}. ID: {id_user} / Nombre: {nombre} - {edad} años'
     return f"ID: {id_user} / Nombre: {nombre} - {edad} años"
 
-def conf():
-    conf = str(input('''Estas seguro de continuar con esta accion? No se puede deshacer!
-\tEscriba "si" para continuar\n''')).lower().strip()
-    if conf == 'si':
-        return True
-    return False
+
 
 def clear_users():                                      #Borrar Lista Actual
     

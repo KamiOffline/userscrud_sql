@@ -50,11 +50,11 @@ while True:                     #Menú principal
 
         case 2:                 #Eliminar usuarios
             clear()
-            name = ask_id('Ingrese el ID del usuario a eliminar:\n')
+            id = ask_id('Ingrese el ID del usuario a eliminar:\n')
             clear()
 
-            if user_exists_by_id(name):
-                del_user(name)
+            if user_exists_by_id(id):
+                del_user(id)
                 clear()
                 usuarios = get_users()
                 print('Usuario Eliminado.')
@@ -103,11 +103,10 @@ while True:                     #Menú principal
             clear()
             id = ask_id('Ingrese el ID del usuario que quiere cambiar\n')
 
-            if search(id):
+            if user_exists_by_id(id):
                 nueva_edad = ask_edad('Ingrese la nueva edad del usuario\n') 
                     
                 edit_user(id, nueva_edad)
-                get_users()
                 print('EL usuario se ha editado con éxito.')
                 pause()
                 
@@ -119,7 +118,6 @@ while True:                     #Menú principal
         
         case 7:                 #Limpiar la lista
             if clear_users():
-                get_users()
                 clear()
                 print('La lista se ha eliminado correctamente')
                 pause()

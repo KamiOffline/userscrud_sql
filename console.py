@@ -38,3 +38,9 @@ def pause():                                            #Pausa en pantalla
 def clear():                                            #Limpiar pantalla
     os.system('cls')
 
+def conf():
+    conf = str(input('''Estas seguro de continuar con esta accion? No se puede deshacer!
+\tEscriba "si" para continuar\n''')).lower().strip()
+    if conf == 'si':
+        return True
+    return False

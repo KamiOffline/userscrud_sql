@@ -1,6 +1,6 @@
 def val_nombre(name):                                   #Validacion de nombres
     name = name.strip()
-    return all(p.isalpha() for p in name.split()) and name
+    return bool(name and all(p.isalpha() for p in name.split()))
 
 def val_edad(edad):                                     #Validacion de edades
     try:
@@ -8,5 +8,5 @@ def val_edad(edad):                                     #Validacion de edades
             return True
         else:
             return False
-    except:
+    except ValueError:
         return False
