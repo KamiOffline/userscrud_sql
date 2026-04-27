@@ -1,0 +1,22 @@
+# Cache 
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Entornos virtuales
+venv/
+env/
+.venv/
+
+# Base de datos
+usuarios.db
+
+# Configuración de VS Code
+.vscode/
+
+# Archivos del sistema
+Thumbs.db
+
+# Logs
+*.log
