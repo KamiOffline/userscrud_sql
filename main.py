@@ -33,36 +33,45 @@ while True:
         case 1:                 #Agregar usuario
             clear()
     
-            name = ask_name('Ingrese el nombre:\n')
+            name = ask_name('Ingrese el nombre, o ingrese "0" para cancelar:\n')
             clear()
-            if not user_exists(name):
-                edad = ask_edad('Ingrese la edad\n')
+            if name != '0':
+                if not user_exists(name):
+                    edad = ask_edad('Ingrese la edad\n')
 
-                clear() 
-                if agg_user(name, edad):
-                    usuarios = get_users()
-                    print('Usuario Agregado correctamente.') 
-                    pause()   
+                    clear() 
+                    if agg_user(name, edad):
+                        usuarios = get_users()
+                        print('Usuario Agregado correctamente.') 
+                        pause()   
 
+                else:
+                    print('Error. El usuario ya existe.')  
+                    pause()
             else:
-                print('Error. El usuario ya existe.')  
+                clear()
+                print('Operacion cancelada')
                 pause()
 
         case 2:                 #Eliminar usuarios
             clear()
-            id = ask_id('Ingrese el ID del usuario a eliminar:\n')
+            id = ask_id('Ingrese el ID del usuario a eliminar, o ingrese "0" para cancelar:\n')
             clear()
 
-            if user_exists_by_id(id):
-                del_user(id)
-                clear()
-                usuarios = get_users()
-                print('Usuario Eliminado.')
-                pause()
-                
+            if id != 0:
+                if user_exists_by_id(id):
+                    del_user(id)
+                    clear()
+                    usuarios = get_users()
+                    print('Usuario Eliminado.')
+                    pause() 
+                else:
+                    clear()
+                    print('EL usuario no existe.')
+                    pause()
             else:
                 clear()
-                print('EL usuario no existe.')
+                print('Se ha cancelado la operación')
                 pause()
             
         case 3:                 #Ver todos los usuarios
@@ -78,19 +87,24 @@ while True:
                 pause()
             
         case 4:                 #Buscar nombres
-            name = ask_search('Ingrese el nombre / ID que desea encontrar\n')
+            name = ask_search('Ingrese el nombre / ID que desea encontrar, o ingrese "0" para cancelar\n')
             clear()
-            resultado = search(name)
+            if name != '0':
+                resultado = search(name)
 
 
-            if resultado:           #Regresa resultados de busqueda por nombre/ID
-                clear()
-                for i, user in enumerate(resultado, start=1):
-                    print(formato_users(user, i))
-                pause()
-                
+                if resultado:           #Regresa resultados de busqueda por nombre/ID
+                    clear()
+                    for i, user in enumerate(resultado, start=1):
+                        print(formato_users(user, i))
+                    pause()
+                    
+                else:
+                    print('No se encontraron usuarios')
+                    pause()
             else:
-                print('No se encontraron usuarios')
+                clear()
+                print('Operacion cancelada')
                 pause()
                 
         case 5:                 #Filtrar usuarios por mayores
@@ -101,21 +115,25 @@ while True:
 
         case 6:                 #Editar usuario
             clear()
-            id = ask_id('Ingrese el ID del usuario que quiere cambiar\n')
-
-            if user_exists_by_id(id):       #Verifica que la ID del usuario existe
-                nueva_edad = ask_edad('Ingrese la nueva edad del usuario\n') 
+            id = ask_id('Ingrese el ID del usuario que quiere cambiar, o ingrese "0" para cancelar\n')
+            if id != 0:
+                if user_exists_by_id(id):       #Verifica que la ID del usuario existe
+                    nueva_edad = ask_edad('Ingrese la nueva edad del usuario\n') 
+                        
+                    edit_user(id, nueva_edad)
+                    print('EL usuario se ha editado con éxito.')
+                    pause()
                     
-                edit_user(id, nueva_edad)
-                print('EL usuario se ha editado con éxito.')
-                pause()
-                
-                
+                    
+                else:
+                    clear()
+                    print('El usuario no existe.')
+                    pause()
             else:
                 clear()
-                print('El usuario no existe.')
+                print('Operacion cancelada')
                 pause()
-        
+
         case 7:                 #Limpiar la lista
             if clear_users():
                 clear()

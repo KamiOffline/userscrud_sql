@@ -19,14 +19,14 @@ def ask_edad(en, error='Ingrese una edad válida\n'):    #Pedir edad
     
     return int(edad)
 
-def ask_id(en, error='Ingrese un id válido\n'):         #Input para busqueda por ID
+def ask_id(en, error='Ingrese un id válido o Ingrese 0 para regresar\n'):         #Input para busqueda por ID
     id = (input(en))
 
     while not id.isdigit():
         os.system('cls')
         id = input(error)
 
-    return id
+    return int(id)
     
 def ask_search(en):                                     #Input para Busqueda por nombre
     valor = input(en).strip()
