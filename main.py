@@ -8,9 +8,9 @@ create_db()
 create_tab()
 usuarios = get_users()          #Carga/Crea base de datos
 
-while True:                     #Menú principal
-    clear()
-    print('''Programa de usuarios
+while True:                     
+    clear()                     #Menú principal
+    print('''Programa de usuarios   
 ---------------------
 1.-Agregar usuarios
 2.-Eliminar usuarios
@@ -83,7 +83,7 @@ while True:                     #Menú principal
             resultado = search(name)
 
 
-            if resultado:
+            if resultado:           #Regresa resultados de busqueda por nombre/ID
                 clear()
                 for i, user in enumerate(resultado, start=1):
                     print(formato_users(user, i))
@@ -103,7 +103,7 @@ while True:                     #Menú principal
             clear()
             id = ask_id('Ingrese el ID del usuario que quiere cambiar\n')
 
-            if user_exists_by_id(id):
+            if user_exists_by_id(id):       #Verifica que la ID del usuario existe
                 nueva_edad = ask_edad('Ingrese la nueva edad del usuario\n') 
                     
                 edit_user(id, nueva_edad)
@@ -128,4 +128,10 @@ while True:                     #Menú principal
 
         case 8:                 #Salir del menú / Terminar programa
             break
-print('**Fin del programa')
+
+        case _:                 #Opciones fuera del menú
+            clear()
+            print('Ingrese una opcion válida')
+            pause()
+
+print('**Fin del programa')     #Texto de salida

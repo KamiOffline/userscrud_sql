@@ -12,7 +12,7 @@ def agg_user(name, edad):                               #Agregar usuarios
     
     return True
 
-def del_user(id):                                     #Eliminar Usuarios
+def del_user(id):                                       #Eliminar Usuarios
     with sqlite3.connect('usuarios.db') as conn:
         cursor = conn.cursor()
 
@@ -34,7 +34,7 @@ def filt_may():                                         #Filtrar usuarios mayore
 
         return cursor.fetchall() 
 
-def user_exists(search):                                  #Matchear usuario existente
+def user_exists(search):                                #Identificar usuario existente por nombre
     with sqlite3.connect('usuarios.db') as conn:
         cursor = conn.cursor()
 
@@ -47,7 +47,7 @@ def user_exists(search):                                  #Matchear usuario exis
 
     return cursor.fetchone() is not None
 
-def user_exists_by_id(search):                                  #Matchear usuario existente
+def user_exists_by_id(search):                          #Identificar usuario existente por ID
     with sqlite3.connect('usuarios.db') as conn:
         cursor = conn.cursor()
 
@@ -69,7 +69,7 @@ def search(name):                                       #Buscar usuarios
 
     return cursor.fetchall()
 
-def edit_user(id, nueva_edad):                        #Editar usuarios
+def edit_user(id, nueva_edad):                          #Editar usuarios
     with sqlite3.connect('usuarios.db') as conn:
         cursor = conn.cursor()
 
@@ -90,9 +90,7 @@ def formato_users(user, index=None):                    #Formato de impresion de
          return f'{index}. ID: {id_user} / Nombre: {nombre} - {edad} años'
     return f"ID: {id_user} / Nombre: {nombre} - {edad} años"
 
-
-
-def clear_users():                                      #Borrar Lista Actual
+def clear_users():                                      #Limpiar BD Actual
     
     if conf():
         with sqlite3.connect('usuarios.db') as conn:

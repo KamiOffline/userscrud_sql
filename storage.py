@@ -16,7 +16,7 @@ def create_tab():                       #Crea la tabla de users
         )
         """)
        
-def get_users():                      #Cargar la lista de usuarios
+def get_users():                        #Cargar la lista de usuarios
     with sqlite3.connect('usuarios.db') as conn:
         cursor = conn.cursor()
 

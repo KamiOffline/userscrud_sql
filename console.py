@@ -19,7 +19,7 @@ def ask_edad(en, error='Ingrese una edad válida\n'):    #Pedir edad
     
     return int(edad)
 
-def ask_id(en, error='Ingrese un id válido\n'):
+def ask_id(en, error='Ingrese un id válido\n'):         #Input para busqueda por ID
     id = (input(en))
 
     while not id.isdigit():
@@ -28,7 +28,7 @@ def ask_id(en, error='Ingrese un id válido\n'):
 
     return id
     
-def ask_search(en):
+def ask_search(en):                                     #Input para Busqueda por nombre
     valor = input(en).strip()
     return valor
 
@@ -38,7 +38,7 @@ def pause():                                            #Pausa en pantalla
 def clear():                                            #Limpiar pantalla
     os.system('cls')
 
-def conf():
+def conf():                                             #Mensaje de confirmación
     conf = str(input('''Estas seguro de continuar con esta accion? No se puede deshacer!
 \tEscriba "si" para continuar\n''')).lower().strip()
     if conf == 'si':
