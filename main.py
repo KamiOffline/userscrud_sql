@@ -10,16 +10,16 @@ usuarios = get_users()          #Carga/Crea base de datos
 
 while True:                     
     clear()                     #Menú principal
-    print('''Programa de usuarios   
+    print('''\033[30;47mPrograma de usuarios\033[0m   
 ---------------------
-1.-Agregar usuarios
-2.-Eliminar usuarios
-3.-Ver todos
-4.-Buscar usuarios
-5.-Ver mayores
-6.-Editar usuario
-7.-Limpiar lista
-8.-Salir del programa
+\033[93m1.-\033[0m Agregar usuarios
+\033[93m2.-\033[0mEliminar usuarios
+\033[93m3.-\033[0mVer todos
+\033[93m4.-\033[0mBuscar usuarios
+\033[93m5.-\033[0mVer mayores
+\033[93m6.-\033[0mEditar usuario
+\033[93m7.-\033[0mLimpiar lista
+\033[93m8.-\033[0mSalir del programa
 ---------------------''')
     
     while True:

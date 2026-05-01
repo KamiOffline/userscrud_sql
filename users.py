@@ -81,6 +81,18 @@ def edit_user(id, nueva_edad):                          #Editar usuarios
 
     return cursor.rowcount > 0
 
+def edit_user_in_api(user_id, name, nueva_edad):                          #Editar usuarios
+    with sqlite3.connect('usuarios.db') as conn:
+        cursor = conn.cursor()
+
+        cursor.execute('''
+        UPDATE usuarios
+        SET nombre = ?, edad = ?
+        WHERE id = ?
+        ''', (name, nueva_edad, user_id))
+        
+        return cursor.rowcount > 0 
+
 def formato_users(user, index=None):                    #Formato de impresion de usuarios
     id_user = user[0]
     nombre = user[1].capitalize()
@@ -89,6 +101,12 @@ def formato_users(user, index=None):                    #Formato de impresion de
     if index is not None:
          return f'{index}. ID: {id_user} / Nombre: {nombre} - {edad} años'
     return f"ID: {id_user} / Nombre: {nombre} - {edad} años"
+
+def formato_users_for_api(user):
+    return {'id': user[0],
+            'nombre': user[1].capitalize(),
+            'edad': user[2]
+            }
 
 def clear_users():                                      #Limpiar BD Actual
     
