@@ -84,14 +84,36 @@ def edit_user(id, nueva_edad):                          #Editar usuarios
 def edit_user_in_api(user_id, name, nueva_edad):                          #Editar usuarios
     with sqlite3.connect('usuarios.db') as conn:
         cursor = conn.cursor()
-
-        cursor.execute('''
-        UPDATE usuarios
-        SET nombre = ?, edad = ?
-        WHERE id = ?
-        ''', (name, nueva_edad, user_id))
         
-        return cursor.rowcount > 0 
+        if name is None and nueva_edad is None:
+            return False
+
+        elif name is None:
+            cursor.execute('''
+                UPDATE usuarios
+                SET edad = ?
+                WHERE id = ?
+                ''', (nueva_edad, user_id))
+            
+            return cursor.rowcount > 0
+        
+        elif nueva_edad is None:
+            cursor.execute('''
+                UPDATE usuarios
+                SET nombre = ?
+                WHERE id = ?
+                ''', (name, user_id))
+            
+            return cursor.rowcount > 0 
+        
+        else:
+            cursor.execute('''
+                UPDATE usuarios
+                SET nombre = ?, edad = ?
+                WHERE id = ?
+                ''', (name, nueva_edad, user_id))
+            
+            return cursor.rowcount > 0
 
 def formato_users(user, index=None):                    #Formato de impresion de usuarios
     id_user = user[0]

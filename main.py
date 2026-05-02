@@ -13,13 +13,13 @@ while True:
     print('''\033[30;47mPrograma de usuarios\033[0m   
 ---------------------
 \033[93m1.-\033[0m Agregar usuarios
-\033[93m2.-\033[0mEliminar usuarios
-\033[93m3.-\033[0mVer todos
-\033[93m4.-\033[0mBuscar usuarios
-\033[93m5.-\033[0mVer mayores
-\033[93m6.-\033[0mEditar usuario
-\033[93m7.-\033[0mLimpiar lista
-\033[93m8.-\033[0mSalir del programa
+\033[93m2.-\033[0m Eliminar usuarios
+\033[93m3.-\033[0m Ver todos
+\033[93m4.-\033[0m Buscar usuarios
+\033[93m5.-\033[0m Ver mayores
+\033[93m6.-\033[0m Editar usuario
+\033[93m7.-\033[0m Limpiar lista
+\033[93m8.-\033[0m Salir del programa
 ---------------------''')
     
     while True:
