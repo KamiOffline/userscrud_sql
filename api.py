@@ -6,10 +6,10 @@ from pydantic import BaseModel
 from fastapi import HTTPException
 
 app = FastAPI()
-class user_create(BaseModel):
+class user_create(BaseModel):               #Crear usuario en formato JSON
     name: str
     edad: int
-class user_update(BaseModel):
+class user_update(BaseModel):               #Actualizar usuario en formato JSON
     name : str | None = None
     edad : int | None = None
     
@@ -18,12 +18,12 @@ def root():
     return {'message': 'Running'}
 
 
-@app.get("/users")
+@app.get("/users")                          #Mostrar todos los usuarios
 def all_users():
     usuarios = get_users()      
     return [formato_users_for_api(user) for user in usuarios]
 
-@app.get("/users/{username}")
+@app.get("/users/{username}")               #Buscar usuarios por coincidencia de nombre o ID
 def get_user_by_id(username):
     db = search(username)
     resultado = []
@@ -33,21 +33,21 @@ def get_user_by_id(username):
     return resultado
 
 
-@app.post("/users")
-def agg_user_api(user: user_create):                               #Agregar usuarios
+@app.post("/users")                         #Agregar usuarios a la DB
+def agg_user_api(user: user_create):                               
     agg_user(user.name, user.edad)
     return {'message': 'Se ha creado el usuario'}
 
 @app.delete("/users/{user_id}")
-def del_user_api(user_id: int):                                       #Eliminar Usuarios
+def del_user_api(user_id: int):                                       
     deleted = del_user(user_id)
     if deleted:
         return {'message': 'Se ha eliminado el usuario'}  
     else:
         raise HTTPException(status_code=404, detail='Usuario no encontrado')
 
-@app.put("/users/{user_id}")
-def edit_user(user_id: int, user : user_update):              #Editar usuarios
+@app.put("/users/{user_id}")                            #Editar usuarios
+def edit_user(user_id: int, user : user_update):              
     edited = edit_user_in_api(user_id, user.name, user.edad)
     
     if edited:
